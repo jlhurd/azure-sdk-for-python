@@ -195,7 +195,7 @@ class Message(WindowsAzureData):
     def renewlock(self):
         ''' Renews the lock on itself if find queue name or topic name and subscription name. ''' 
         if self._queue_name:
-            result = self.service_bus_service.renewlock_queue_message(self._queue_name, self.broker_properties['MessageId'], self.broker_properties['LockToken'])
+            self.service_bus_service.renewlock_queue_message(self._queue_name, self.broker_properties['MessageId'], self.broker_properties['LockToken'])
         #elif self._topic_name and self._subscription_name:
         #    self.service_bus_service.unlock_subscription_message(self._topic_name, self._subscription_name, self.broker_properties['SequenceNumber'], self.broker_properties['LockToken'])
         else:
